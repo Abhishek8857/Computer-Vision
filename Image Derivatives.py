@@ -3,7 +3,7 @@ import cv2
 import imageio.v2 as iio
 import matplotlib.pyplot as plt
 
-im = iio.imread("Programs\images\girl.jpg")
+im = iio.imread("flamingo-1024x1550.webp")
 
 
 def plot_multiple(images, titles, colormap='gray', max_columns=np.inf, share_axes=True):
