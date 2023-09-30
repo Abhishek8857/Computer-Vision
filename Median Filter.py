@@ -3,7 +3,7 @@ import cv2
 import imageio.v2 as iio
 import matplotlib.pyplot as plt
 
-im = iio.imread("Programs\images\spnoise.png")
+im = iio.imread("spnoise.png")
 
 
 def plot_multiple(images, titles, colormap='gray', max_columns=np.inf, share_axes=True):
