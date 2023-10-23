@@ -141,7 +141,7 @@ def gauss_second_derivs(image, sigma):
     return image_dxx, image_dxy, image_dyy
 
 
-# Plot function for image 2
+# Plot function for image 1
 grad_dxx, grad_dxy, grad_dyy = gauss_second_derivs(image, sigma=2.0)
 plot_multiple([image, grad_dxx, grad_dxy, grad_dyy], ["Image", "Dxx", "Dxy", "Dyy"])
 
@@ -155,9 +155,10 @@ plot_multiple([image, grad_dxx, grad_dxy, grad_dyy], ["Image", "Dxx", "Dxy", "Dy
 def image_gradients_polar(image, sigma):
     image_dx, image_dy = gauss_derivs(image, sigma)
     magnitude = np.sqrt(image_dx**2 + image_dy**2)
-    direction = np.arctan(image_dx/image_dy)
+    direction = np.arctan2(image_dx, image_dy)
     return magnitude, direction
 
+image = imread_gray("images\Marq_1.jpg")
 grad_mag, grad_dir = image_gradients_polar(image, sigma=2.0)
 
 # Note: the twilight colormap only works since Matplotlib 3.0, use 'gray' in earlier versions.
