@@ -194,4 +194,41 @@ for path, ax in zip(paths, axes):
     plot_3d_histogram(ax, hist, "RGB")
 fig.tight_layout()
 
+
+def compute_2d_histogram(im, n_bins):
+    histogram = np.zeros([n_bins, n_bins], dtype=np.float32)
+    bin_size = 1 / n_bins
+    height, width, layers = im.shape
+    for i in range(height):
+        for j in range(width):
+            index = np.floor(im[i, j] / bin_size).astype(int)
+            histogram[index[0]][index[1]] += 1
+    histogram /= np.sum(histogram)
+    return histogram
+
+
+def compute_gradient_histogram(rgb_im, n_bins):
+    # Convert to grayscale
+    gray_im = cv2.cvtColor(im, cv2.COLOR_RGB2GRAY).astype(float)
+    # Compute Gaussian derivatives
+    dx, dy = gauss_derivs(gray_im, sigma=2.0)
+    # Map the derivatives between -10 and 10 to be between 0 and 1
+    dx = map_range(dx, start=-10, end=10)
+    dy = map_range(dy, start=-10, end=10)
+    # Stack the two derivative images along a new
+    # axis at the end (-1 means "last")
+    gradients = np.stack([dy, dx], axis=-1)
+    return dx, dy, compute_2d_histogram(gradients, n_bins=16)
+
+
+paths = ["images\Marq_2.jpg", "images\Quart_1.jpg"]
+images, titles = [], []
+
+for path in paths:
+    im = iio.imread(path)
+    dx, dy, hist = compute_gradient_histogram(im, n_bins=16)
+    images += [im, dx, dy, np.log(hist + 1e-3)]
+    titles += [path, "dx", "dy", "Histogram (log)"]
+
+plot_multiple(images, titles, max_columns=4, imwidth=2, imheight=2, colormap="viridis")
 plt.show()
