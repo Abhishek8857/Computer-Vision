@@ -3,7 +3,7 @@ import cv2
 import imageio.v2 as iio
 import matplotlib.pyplot as plt
 
-im = iio.imread("flamingo-1024x1550.webp")
+im = iio.imread("images/eye.jpg")
 
 
 def plot_multiple(images, titles, colormap='gray', max_columns=np.inf, share_axes=True):
@@ -123,4 +123,4 @@ def compute_gradients(im):
 comp_im = gamma_compression(im)
 
 plot_multiple([im, comp_im, compute_gradients(comp_im), prewitt_filter(comp_im), sorbet_filter(comp_im), robert_filter(comp_im)],
-              ["Original", "Gamma Compressed", "Gradient", "Prewitt", "Sorbet", "Robert"])
+              ["Original", "Gamma Compressed", "Gradient", "Prewitt", "Sobel", "Robert"])
