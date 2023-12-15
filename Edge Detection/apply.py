@@ -1,6 +1,7 @@
 import imageio.v3 as iio
 from convinience_functions import *
 from edge_detection import *
+import cv2
 
 # Read image
 color_im = iio.imread("images\Marq_3.jpg")
