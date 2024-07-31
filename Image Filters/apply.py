@@ -9,7 +9,7 @@ from robert_filter import robert_filter
 from sorbet_filter import sorbet_filter
 
 
-im = iio.imread("images/flamingo.webp")
+im = iio.imread("Computer-Vision/images/flamingo.webp")
 comp_im = gamma_compression(im)
 
 plot_multiple([im, comp_im, compute_gradients(comp_im), prewitt_filter(comp_im), sorbet_filter(comp_im), robert_filter(comp_im)],

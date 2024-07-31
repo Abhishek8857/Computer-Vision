@@ -12,7 +12,7 @@ class HessianOpts:
 
 opts = HessianOpts()
 
-paths = ["images/checkboard.jpg", "images/graf.png", "images/gantrycrane.png"]
+paths = ["Computer-Vision/images/checkboard.jpg", "Computer-Vision/images/graf.png", "Computer-Vision/images/gantrycrane.png"]
 
 images = []
 titles = []

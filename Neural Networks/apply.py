@@ -125,15 +125,15 @@ def train_classifier(
   
 if __name__ == "__main__":  
     # Train the softmax classifier
-    # opt = optim.SGD(softmax_regression.parameters(), lr=1e-2)
-    # train_classifier(softmax_regression, opt, "softmax_regression")
+    opt = optim.SGD(softmax_regression.parameters(), lr=1e-2)
+    train_classifier(softmax_regression, opt, "softmax_regression")
     
     # One of the most popular vairant developed to improve the stochastic gradient model is the 
     # Adam:"https://arxiv.org/abs/1412.6980, "adaptive moment estimation.
     
     # Train the Softmax Adam classifier
-    # opt = optim.Adam(softmax_regression_adam.parameters(), lr=2e-4)
-    # train_classifier(softmax_regression_adam, opt, "softmax_regression_adam")
+    opt = optim.Adam(softmax_regression_adam.parameters(), lr=2e-4)
+    train_classifier(softmax_regression_adam, opt, "softmax_regression_adam")
     
     # Multiplication by the weights  𝑊 can be interpreted as computing responses to correlation templates per image class.
     # That means, we can reshape the weight array  𝑊 to a obtain "template images".
@@ -147,23 +147,23 @@ if __name__ == "__main__":
     plot_multiple(rescaled_templates.cpu(), labels, max_columns=5)
 
     # Train the tanh MLP 
-    # opt = optim.Adam(tanh_mlp.parameters(), lr=2e-4)
-    # train_classifier(tanh_mlp, opt, f"tanh_mlp")
+    opt = optim.Adam(tanh_mlp.parameters(), lr=2e-4)
+    train_classifier(tanh_mlp, opt, f"tanh_mlp")
         
     # Data Augmentation
     # Train the tanh MLP with augmented data
-    # opt = optim.Adam(tanh_mlp.parameters(), lr=2e-4)
-    # train_classifier(tanh_mlp, opt, f"tanh_mlp_augmented", train_data=augmented_train_data)
+    opt = optim.Adam(tanh_mlp.parameters(), lr=2e-4)
+    train_classifier(tanh_mlp, opt, f"tanh_mlp_augmented", train_data=augmented_train_data)
     
     # ReLu
     # Train ReLU
-    # opt = optim.Adam(relu_mlp.parameters(), lr=2e-4)
-    # train_classifier(relu_mlp, opt, "relu_mlp", train_data=augmented_train_data)
+    opt = optim.Adam(relu_mlp.parameters(), lr=2e-4)
+    train_classifier(relu_mlp, opt, "relu_mlp", train_data=augmented_train_data)
     
     # CNN
     # Train CNN 
-    # opt = optim.Adam(cnn.parameters(), lr=1e-3)
-    # train_classifier(cnn, opt, "cnn", train_data=augmented_train_data)
+    opt = optim.Adam(cnn.parameters(), lr=1e-3)
+    train_classifier(cnn, opt, "cnn", train_data=augmented_train_data)
     
     # Implementing the Forward Pass
     my_logits = my_predict_cnn(inp_np, W1, b1, W2, b2, W3, b3)
@@ -176,29 +176,29 @@ if __name__ == "__main__":
     
     # Batch Normalisation
     # Train the CNN with Batch Norm
-    # opt = optim.Adam(cnn_batchnorm.parameters(), lr=1e-3)
-    # train_classifier(cnn_batchnorm, opt, "cnn_batchnorm", train_data=augmented_train_data)
+    opt = optim.Adam(cnn_batchnorm.parameters(), lr=1e-3)
+    train_classifier(cnn_batchnorm, opt, "cnn_batchnorm", train_data=augmented_train_data)
     
     
     # Strided Convolutions
     # Train the CNN with Strided Convolutions
-    # opt = optim.Adam(cnn_strides.parameters(), lr=1e-3)
-    # train_classifier(cnn_strides, opt, "cnn_strides", train_data=augmented_train_data)
+    opt = optim.Adam(cnn_strides.parameters(), lr=1e-3)
+    train_classifier(cnn_strides, opt, "cnn_strides", train_data=augmented_train_data)
     
     
     # Global Pooling
     # Train the CNN with global pooling
-    # opt = optim.Adam(cnn_global_pool.parameters(), lr=1e-3)
-    # train_classifier(cnn_global_pool, 
-    #                  opt, 
-    #                  logdir="cnn_global_pool", 
-    #                  train_data=augmented_train_data)
+    opt = optim.Adam(cnn_global_pool.parameters(), lr=1e-3)
+    train_classifier(cnn_global_pool, 
+                     opt, 
+                     logdir="cnn_global_pool", 
+                     train_data=augmented_train_data)
     
     
     # Resnet 
     # Train the Classifier
-    # opt = optim.Adam(resnet.parameters(), lr=1e-3, weight_decay=1e-4)
-    # train_classifier(resnet, opt, f"resnet", train_data=augmented_train_data)
+    opt = optim.Adam(resnet.parameters(), lr=1e-3, weight_decay=1e-4)
+    train_classifier(resnet, opt, f"resnet", train_data=augmented_train_data)
     
     
     # Learning Rate Decay
@@ -209,10 +209,10 @@ if __name__ == "__main__":
     opt = optim.Adam(resnet_decay.parameters(), lr=1e-3, weight_decay=1e-4)
     
     scheduler = optim.lr_scheduler.MultiStepLR(opt, [35, 45], gamma=0.1)
-    # train_classifier(resnet_decay, 
-    #                  opt,
-    #                  "resnet_decay",
-    #                  lr_scheduler=scheduler,
-    #                  train_data=augmented_train_data,)
+    train_classifier(resnet_decay, 
+                     opt,
+                     "resnet_decay",
+                     lr_scheduler=scheduler,
+                     train_data=augmented_train_data,)
     
-    # plt.show()
+    plt.show()

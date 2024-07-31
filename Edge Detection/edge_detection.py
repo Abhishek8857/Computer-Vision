@@ -101,7 +101,7 @@ def nms_for_canny(grad_mag, grad_dir):
 #     gray_im, sigma=2, theta=0.17
 # )  # 0.17 corresponds to an absolute threshold of 5
 
-# # plot_multiple([edges1, edges2], ["get_edges", "get_edges_with_nms"], imsize=6)
+# plot_multiple([edges1, edges2], ["get_edges", "get_edges_with_nms"], imsize=6)
 
 
 

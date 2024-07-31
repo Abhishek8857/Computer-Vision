@@ -3,7 +3,7 @@ from gaussian_filter import *
 from plot import plot_multiple
 
 # Read the image
-im = iio.imread("images\Quart_1.jpg")
+im = iio.imread("Computer-Vision/images/Quart_1.jpg")
 
 # Print the Guassian Value
 print("Gauss of 5 is", gauss(5, sigma=2))

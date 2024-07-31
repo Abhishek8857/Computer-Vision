@@ -4,13 +4,12 @@ from edge_detection import *
 import cv2
 
 # Read image
-color_im = iio.imread("images\Marq_3.jpg")
+color_im = iio.imread("Computer-Vision/images/Marq_3.jpg")
 # Convert to grayscale
 gray_im = cv2.cvtColor(color_im, cv2.COLOR_RGB2GRAY).astype(np.float32)
 
-get_edges(gray_im, 2, 2)
-plot_multiple([gray_im], ["Image"])
-
+plot_multiple([get_edges(gray_im, 2, 2)], ["Image"])
+              
 sigmas = [1, 2]
 thetas = [1, 2, 5, 10]
 

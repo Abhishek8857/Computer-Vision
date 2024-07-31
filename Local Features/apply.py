@@ -10,12 +10,12 @@ from gradient_histogram import compute_gradient_histogram
 from distances import chi_square_distance, euclidean_distance
 from maglap_histogram import compute_maglap_histogram
 from plot import plot_multiple, plot_3d_histogram
-
+from mpl_toolkits.mplot3d import Axes3D 
 
 # 1D Histogram Plot 
 fig, axes = plt.subplots(1, 4, figsize=(10, 2), constrained_layout=True)
 bin_counts = [2, 25, 256]
-gray_img = iio.imread("images/terrain.png", mode="L").astype(np.float32) / 256
+gray_img = iio.imread("Computer-Vision/images/terrain.png", mode="L").astype(np.float32) / 256
 
 axes[0].set_title("Image")
 axes[0].imshow(gray_img, cmap="gray")
@@ -28,7 +28,7 @@ for ax, n_bins in zip(axes[1:], bin_counts):
     
 
 # 3D Histogram Plot
-paths = ["images/sunset.png", "images/terrain.png"]
+paths = ["Computer-Vision/images/sunset.png", "Computer-Vision/images/terrain.png"]
 images = [iio.imread(p) for p in paths]
 plot_multiple(images, paths)
 
@@ -40,7 +40,7 @@ for path, ax in zip(paths, axes):
 fig.tight_layout()
 
 # Gradient Histogram Plot
-paths = ["images/model/obj4__0.png", "images\model\obj42__0.png"]
+paths = ["Computer-Vision/images/model/obj4__0.png", "Computer-Vision/images/model/obj42__0.png"]
 images, titles = [], []
 
 for path in paths:
@@ -52,7 +52,7 @@ for path in paths:
 plot_multiple(images, titles, max_columns=4, imwidth=2, imheight=2, colormap="viridis")
 
 # Gradient Magnitude and Laplacian Histogram Plot
-paths = [f"images/model/obj{i}__0.png" for i in [20, 37, 36, 55]]
+paths = [f"Computer-Vision/images/model/obj{i}__0.png" for i in [20, 37, 36, 55]]
 images, titles = [], []
 
 for path in paths:
@@ -63,9 +63,9 @@ for path in paths:
 plot_multiple(images, titles, imwidth=2, imheight=2, max_columns=4, colormap="viridis")
 
 
-im1 = iio.imread("images/model/obj1__0.png")
-im2 = iio.imread("images/model/obj91__0.png")
-im3 = iio.imread("images/model/obj94__0.png")
+im1 = iio.imread("Computer-Vision/images/model/obj1__0.png")
+im2 = iio.imread("Computer-Vision/images/model/obj91__0.png")
+im3 = iio.imread("Computer-Vision/images/model/obj94__0.png")
 
 n_bins = 8
 h1 = compute_3d_histogram(im1 / 256, n_bins)

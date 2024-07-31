@@ -2,8 +2,8 @@ from fourier_transform import *
 
 
 # Plot the image
-im_1 = imread_gray("images\grass.jpeg")
-im_2 = imread_gray("images\zebra.jpg")
+im_1 = imread_gray("Computer-Vision/images/grass.jpeg")
+im_2 = imread_gray("Computer-Vision/images/zebra.jpg")
 im_pattern = generate_pattern()
 plot_with_spectra(
     [im_1, im_2, im_pattern], ["Image 1", "Image 2", "Pattern image"]

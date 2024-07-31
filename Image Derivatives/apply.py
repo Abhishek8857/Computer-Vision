@@ -2,9 +2,9 @@ import numpy as np
 from image_derivatives import *
 
 # Read 3 images
-image_1 = imread_gray("images\Marq_1.jpg")
-image_2 = imread_gray("images\Marq_2.jpg")
-image_3 = imread_gray("images\Marq_3.jpg")
+image_1 = imread_gray("Computer-Vision/images/Marq_1.jpg")
+image_2 = imread_gray("Computer-Vision/images/Marq_2.jpg")
+image_3 = imread_gray("Computer-Vision/images/Marq_3.jpg")
 
 # Plot Gauss
 x = np.linspace(-5, 5, 100)
